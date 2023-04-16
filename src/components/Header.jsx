@@ -23,17 +23,21 @@ const Header = () => {
           Home
         </Link>
         <Link to="/signin" className="btn btn-ghost normal-case text-xl">
-         Log  in
+          Log in
         </Link>
         <Link to="/register" className="btn btn-ghost normal-case text-xl">
           Register
         </Link>
-        <Link to="/orders" className="btn btn-ghost normal-case text-xl">
-          Orders
-        </Link>
-        <Link to="/profile" className="btn btn-ghost normal-case text-xl">
-        Profile
-        </Link>
+        {user && (
+          <div>
+            <Link to="/orders" className="btn btn-ghost normal-case text-xl">
+              Orders
+            </Link>
+            <Link to="/profile" className="btn btn-ghost normal-case text-xl">
+              Profile
+            </Link>
+          </div>
+        )}
         {user ? (
           <>
             <p>{user.email} </p>
