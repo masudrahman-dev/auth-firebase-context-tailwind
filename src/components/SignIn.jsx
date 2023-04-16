@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../Providers/UserProvider";
 
 const SignIn = () => {
-  const { signInUser } = useContext(UserContext);
+  const { signInUser, signInWithGoogle } = useContext(UserContext);
 
   const signInHandler = (e) => {
-
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -15,14 +14,21 @@ const SignIn = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log("loggedUser :>> ", loggedUser);
-
       })
       .catch((err) => {
         console.log("err :>> ", err);
       });
     e.target.reset();
   };
-
+  const signInWithGoogleHandler = () => {
+    signInWithGoogle()
+      .then(() => {
+        // no perameter
+      })
+      .catch((err) => {
+        console.log("err :>> ", err);
+      });
+  };
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -67,6 +73,11 @@ const SignIn = () => {
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Login</button>
+            </div>
+            <div className="form-control mt-6">
+              <button onClick={signInWithGoogle} className="btn btn-primary">
+                Login with google
+              </button>
             </div>
           </form>
 
