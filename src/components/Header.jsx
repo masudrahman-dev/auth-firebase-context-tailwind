@@ -31,6 +31,9 @@ const Header = () => {
         <Link to="/orders" className="btn btn-ghost normal-case text-xl">
           Orders
         </Link>
+        <Link to="/profile" className="btn btn-ghost normal-case text-xl">
+        Profile
+        </Link>
         {user ? (
           <>
             <p>{user.email} </p>
