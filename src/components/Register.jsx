@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../Providers/UserProvider";
 
 const Register = () => {
+  const { user, createUser } = useContext(UserContext);
+
   const registerHandler = (e) => {
     e.preventDefault();
 
@@ -10,7 +13,16 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    // console.log(email, password, name);
+    createUser(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((err) => {
+        console.log("err :>> ", err);
+      });
+
+    console.log(email, password, name);
     e.target.reset();
   };
   return (
@@ -62,8 +74,8 @@ const Register = () => {
                 required
               />
               <label className="label">
-                <Link to="/login" className="btn btn-link">
-                  Login if already have account.
+                <Link to="/signin" className="btn btn-link">
+                  Signin if already have account.
                 </Link>
               </label>
             </div>
