@@ -10,7 +10,7 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password, name);
+    // console.log(email, password, name);
     e.target.reset();
   };
   return (
